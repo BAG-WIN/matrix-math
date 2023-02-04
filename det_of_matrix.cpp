@@ -42,9 +42,8 @@ int main() {
 	cout << "n = ";
 	cin >> n;
 	int** a = new int*[n];
-    for (int i = 0; i < n; i++) {
-        a[i] = new int[n];
-    }
+	for (int i = 0; i < n; i++)
+        	a[i] = new int[n];
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < n; ++j) {
 			cin >> a[i][j];
@@ -53,4 +52,3 @@ int main() {
 	cout << "det A = " << det(a, n);
 	return 0;
 }
-
