@@ -1,29 +1,29 @@
 #include <iostream>
-#include <math.h>
+#include <cmath>
+#include <cstdlib>
 using namespace std;
 
-void clearMemory(int** a, int n) { 
-    for (int i = 0; i < n; i++) {
+void clearMemory(double** a, long long n) { 
+    for (long long i = 0; i < n; i++) {
         delete[] a[i];
     }
     delete [] a;        
 }
         
-int det(int** a, int n) { 
+double det(double** a, long long n) { 
     if (n == 1)
         return a[0][0];
     else if (n == 2)
         return a[0][0] * a[1][1] - a[0][1] * a[1][0];
     else {
         int d = 0;
-        for (int k = 0; k < n; k++) {
-            int** m = new int*[n-1];
-            for (int i = 0; i < n - 1; i++) {
-                m[i] = new int[n - 1];
-            }
-            for (int i = 1; i < n; i++) {
-                int t = 0;
-                for (int j = 0; j < n; j++) {
+        for (long long k = 0; k < n; k++) {
+            double** m = new double*[n-1];
+            for (int i = 0; i < n - 1; i++)
+                m[i] = new double[n - 1];
+            for (long long i = 1; i < n; i++) {
+                long long t = 0;
+                for (long long j = 0; j < n; j++) {
                     if (j == k)
                         continue;
                     m[i-1][t] = a[i][j];
@@ -38,17 +38,20 @@ int det(int** a, int n) {
 }
 
 int main() {
-	int n;
-	cout << "n = ";
+	long long n;
+	cout << "Enter matrix size\nn = ";
 	cin >> n;
-	int** a = new int*[n];
-	for (int i = 0; i < n; i++)
-        	a[i] = new int[n];
-	for (int i = 0; i < n; ++i) {
-		for (int j = 0; j < n; ++j) {
+	double** a = new double*[n];
+    for (long long i = 0; i < n; i++)
+        a[i] = new double[n];
+    cout << "Enter the matrix:\n";
+	for (long long i = 0; i < n; ++i) {
+		for (long long j = 0; j < n; ++j) {
 			cin >> a[i][j];
 		}
 	}
-	cout << "det A = " << det(a, n);
+	cout << "Matrix determinant A = " << det(a, n) << endl;
+	cout << "The program 'det_of_matrix' is completed.\n";
+	system("pause");
 	return 0;
 }
